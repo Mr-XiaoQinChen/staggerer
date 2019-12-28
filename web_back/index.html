@@ -18,7 +18,7 @@
         <a href="#" class="logo"><img src="images/logo02.png" alt="logo"></a>
         <div class="user_info">
             <img src="images/2.jpg" alt="person">
-            <span>欢迎&nbsp;&nbsp;李思思</span>
+            <span></span>
             <b>管理员</b>
         </div>
         <div class="menu">
@@ -105,6 +105,7 @@
     </script>
 <!-- 退出 -->
 <script>
+    // 退出功能-------------------------------------------------
     $('#tuichu').click(function() {
         $.post(
             'http://localhost:8000/admin/logout',
@@ -119,7 +120,17 @@
         )
     })
     
-    
+    // 获取管理员信息------------------------------------------------
+    $.get('http://localhost:8000/admin/getuser',function(res) {
+        if (res.code === 200) {
+            // console.log(1);
+            $('.user_info').find('img').prop('src',res.data.user_pic).next('span').html('欢迎:&nbsp;&nbsp;'+res.data.nickname);
+            $('.user_center_link').find('img').prop('src',res.data.user_pic);
+        }
+      
+        
+        
+    })
 </script>
 </body>
 </html>
