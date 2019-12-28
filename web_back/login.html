@@ -31,29 +31,20 @@
 
     </div> 
     <script src="./js/jquery-1.12.4.min.js"></script>
+
+    <script src="./utils/config.js"></script>
+    <script src="./utils/user.js"></script>
     <script>    
+    // 实现登陆功能------------------------------------------
     $('.input_sub').click(function(e) {
         e.preventDefault();
         // console.log(1);
         
         var userName = $('.input_txt').val().trim();
         var password = $('.input_pass').val().trim();
-        $.ajax({
-            type: 'POST',
-            url: 'http://localhost:8000/admin/login',
-            data: {
-                user_name: userName,
-                password: password
-            },
-            success: function(res) {
-                // console.log(res);
-                if(res.code === 200) {
-                    alert(res.msg);
-                    location.href = "index.html"
-                }
-                
-            }
-        })
+
+
+        user.logIn(userName,password);
     })
     
 

@@ -55,6 +55,7 @@
 
 
     <script>
+
         var $level01 = $('.level01');
         var $subli = $('.level02 li')
         $level01.click(function(){
@@ -103,34 +104,16 @@
         }
 
     </script>
-<!-- 退出 -->
+    <script src="./utils/config.js"></script>
+    <script src="./utils/user.js"></script>
 <script>
     // 退出功能-------------------------------------------------
     $('#tuichu').click(function() {
-        $.post(
-            'http://localhost:8000/admin/logout',
-            function(res) {
-                // console.log(res);
-                if (res.code === 200) {
-                    alert(res.msg);
-                    location.href = 'login.html'
-                }
-                
-            }
-        )
+        user.logOut();
     })
     
     // 获取管理员信息------------------------------------------------
-    $.get('http://localhost:8000/admin/getuser',function(res) {
-        if (res.code === 200) {
-            // console.log(1);
-            $('.user_info').find('img').prop('src',res.data.user_pic).next('span').html('欢迎:&nbsp;&nbsp;'+res.data.nickname);
-            $('.user_center_link').find('img').prop('src',res.data.user_pic);
-        }
-      
-        
-        
-    })
+    user.getUser();
 </script>
 </body>
 </html>
