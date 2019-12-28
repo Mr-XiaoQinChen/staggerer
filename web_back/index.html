@@ -113,7 +113,14 @@
     })
     
     // 获取管理员信息------------------------------------------------
-    user.getUser();
+    // 运用了回调函数
+    user.getUser(function(res) {
+        if (res.code === 200) {
+                // console.log(1);
+                $('.user_info').find('img').prop('src',res.data.user_pic).next('span').html('欢迎:&nbsp;&nbsp;'+res.data.nickname);
+                $('.user_center_link').find('img').prop('src',res.data.user_pic);
+            } 
+    });
 </script>
 </body>
 </html>

@@ -35,13 +35,14 @@ var user = {
         )
     },
     // 获取用户头像信息
-    getUser: function () {
+    getUser: function (callback) {
         $.get(userUrl + '/admin/getuser',function(res) {
-            if (res.code === 200) {
+            callback(res);
+            /* if (res.code === 200) {
                 // console.log(1);
                 $('.user_info').find('img').prop('src',res.data.user_pic).next('span').html('欢迎:&nbsp;&nbsp;'+res.data.nickname);
                 $('.user_center_link').find('img').prop('src',res.data.user_pic);
-            }  
+            }  */ 
         })
     }
 }
